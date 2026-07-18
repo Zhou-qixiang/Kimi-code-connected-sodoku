@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>连通数独</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========== 开始界面 ========== -->
+  <div id="start-screen" class="screen">
+    <div class="start-card">
+      <h1 class="game-title">连通数独</h1>
+      <p class="subtitle">一个统一的大棋盘：四个 6×6 数独区域两两重叠<br>重叠格必须同时满足两个区域的全部规则</p>
+      <div class="diff-btns">
+        <button class="diff-btn" data-diff="easy">简 单</button>
+        <button class="diff-btn" data-diff="medium">中 等</button>
+        <button class="diff-btn" data-diff="hard">困 难</button>
+      </div>
+      <div class="rules-summary">
+        <div class="rule-item"><span class="rule-icon">▦</span>每个 6×6 区域：每行、每列、每个 2×2 宫数字不重复</div>
+        <div class="rule-item"><span class="rule-icon" style="color:#4f9cf9">●</span>奇偶数独：白点两侧一奇一偶</div>
+        <div class="rule-item"><span class="rule-icon" style="color:#45bd73">③</span>差值数独：绿圈数字 = 两格之差</div>
+        <div class="rule-item"><span class="rule-icon" style="color:#b678e0">■</span>彩色数独：同色连通区域数字不重复</div>
+        <div class="rule-item"><span class="rule-icon" style="color:#e8a54a">↘</span>箭头数独：箭头斜向指向 2×2 宫内的最大数字</div>
+        <div class="rule-item"><span class="rule-icon hatch-demo"></span>斜纹格为区域重叠格，需同时满足两个区域规则</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 游戏界面 ========== -->
+  <div id="game-screen" class="screen hidden">
+    <header class="topbar">
+      <button id="btn-back" class="bar-btn">← 返回</button>
+      <span id="diff-label" class="diff-label"></span>
+      <span id="timer" class="timer">00:00</span>
+    </header>
+
+    <div id="board-area">
+      <div id="mega-board"></div>
+    </div>
+
+    <div class="controls">
+      <div id="numpad"></div>
+      <div class="action-btns">
+        <button id="btn-erase" class="act-btn">橡皮擦</button>
+        <button id="btn-notes" class="act-btn">候选数字</button>
+        <button id="btn-check" class="act-btn primary">检查答案</button>
+        <button id="btn-new" class="act-btn">换一题</button>
+        <button id="btn-reset" class="act-btn">重置</button>
+      </div>
+      <div id="message" class="message"></div>
+    </div>
+  </div>
+
+  <!-- ========== 题目生成中 ========== -->
+  <div id="loading-overlay" class="hidden">
+    <div class="spinner"></div>
+    <p>题目生成中，正在验证唯一解…</p>
+  </div>
+
+  <!-- ========== 完成动画 ========== -->
+  <div id="win-overlay" class="hidden">
+    <div id="confetti"></div>
+    <div class="win-card">
+      <h2>🎉 恭喜完成！</h2>
+      <p id="win-time"></p>
+      <button id="btn-again" class="act-btn primary">返回主页</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
